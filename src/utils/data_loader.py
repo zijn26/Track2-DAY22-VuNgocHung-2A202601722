@@ -41,7 +41,10 @@ def split_text(text: str, chunk_size: int = 500, chunk_overlap: int = 50) -> lis
     Returns:
         list[str] — danh sách các chuỗi chunk
     """
-    from langchain_text_splitters import RecursiveCharacterTextSplitter
+    try:
+        from langchain_text_splitters import RecursiveCharacterTextSplitter
+    except ImportError:
+        from langchain.text_splitter import RecursiveCharacterTextSplitter
 
     splitter = RecursiveCharacterTextSplitter(
         chunk_size=chunk_size,
